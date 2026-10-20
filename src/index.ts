@@ -191,7 +191,7 @@ const limiter = rateLimit({ windowMs: 60 * 1000, max: 100, standardHeaders: true
 
 // Health and discovery live under /mcp/ so they work behind the same Nginx location.
 const health = (_req: Request, res: Response) => { res.json({ status: "ok", name: "gomo-group", version: VERSION, api_base: API_BASE }); };
-const tools = (_req: Request, res: Response) => { res.json({ name: "gomo-group", version: VERSION, transport: "streamable-http", endpoint: "https://www.gomogroup.com/mcp", tools: TOOLS }); };
+const tools = (_req: Request, res: Response) => { res.json({ name: "gomo-group", version: VERSION, transport: "streamable-http", endpoint: "https://agent-mcp.gomogroup.com/mcp", tools: TOOLS }); };
 app.get(["/health", "/mcp/health"], health);
 app.get(["/tools", "/mcp/tools"], tools);
 
