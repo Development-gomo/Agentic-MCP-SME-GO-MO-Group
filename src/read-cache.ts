@@ -121,7 +121,7 @@ export class ReadCache {
       try {
         const url = `${this.config.apiBase.replace(/\/+$/, "")}/${name}.json`;
         const value = await (this.config.fetcher ? this.config.fetcher(url) : fetchJson(url,
-          { headers: { Accept: "application/json", "User-Agent": "gomo-mcp/1.3.0" } }, this.config.timeoutMs));
+          { headers: { Accept: "application/json", "User-Agent": "GomoGroup-Agent/1.0 (+https://www.gomogroup.com)" } }, this.config.timeoutMs));
         const body = validateSnapshot(value, name, this.now());
         this.entries.set(name, { body, origin: "upstream", verifiedAt: this.now(), generatedAt: Date.parse(body._meta.generated) });
         this.errors.delete(name);

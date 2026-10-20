@@ -6,8 +6,9 @@ import { once } from "node:events";
 import { fileURLToPath } from "node:url";
 
 test("MCP cold start works behind HTML challenges; contacts never use fallback success", async t => {
-  let mode = "html"; let posts = 0;
+  let mode = "html"; let posts = 0; const userAgents = new Set();
   const origin = createServer((req, res) => {
+    userAgents.add(req.headers["user-agent"]);
     if (req.method === "POST") posts++;
     if (mode === "html") {
       res.setHeader("Content-Type", "text/html");
@@ -75,5 +76,6 @@ test("MCP cold start works behind HTML challenges; contacts never use fallback s
   const success = await call("submit_contact_inquiry", body);
   assert(!success.isError);
   assert.equal(JSON.parse(success.content[0].text).lead_id, "test-receipt");
+  assert(userAgents.has("GomoGroup-Agent/1.0 (+https://www.gomogroup.com)"), "upstream reads and contacts use the identifiable User-Agent");
   assert.equal(posts, 3, "each contact makes one real request to the local fixture; never cached or retried");
 });

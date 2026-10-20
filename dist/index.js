@@ -184,7 +184,7 @@ function buildServer(clientIp) {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
-                    "User-Agent": `gomo-mcp/${VERSION}`,
+                    "User-Agent": "GomoGroup-Agent/1.0 (+https://www.gomogroup.com)",
                     ...(MCP_SHARED_SECRET && clientIp ? { "X-GOMO-MCP-Key": MCP_SHARED_SECRET, "X-GOMO-Client-IP": clientIp } : {}),
                 },
                 body: JSON.stringify(body),
