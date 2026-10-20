@@ -13,6 +13,7 @@ import rateLimit from "express-rate-limit";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { z } from "zod";
+import { ReadCache, fetchJson } from "./read-cache.js";
 
 const VERSION = "1.3.0";
 const API_BASE = process.env.GOMO_API_BASE ?? "https://www.gomogroup.com/agent/v1";
@@ -24,23 +25,21 @@ const MCP_SHARED_SECRET = process.env.GOMO_MCP_SHARED_SECRET ?? "";
 
 // ── HTTP helpers ─────────────────────────────────────────────────────────────
 
-async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = API_TIMEOUT): Promise<globalThis.Response> {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    return await fetch(url, { ...options, signal: controller.signal });
-  } finally {
-    clearTimeout(id);
-  }
+function positiveMs(name: string, fallback: number): number {
+  const value = Number(process.env[name] ?? fallback);
+  if (!Number.isFinite(value) || value <= 0) throw new Error(`${name} must be a positive number`);
+  return value;
 }
-
-async function apiGet(path: string, params: Record<string, string | undefined> = {}): Promise<unknown> {
-  const url = new URL(`${API_BASE}/${path}`);
-  for (const [k, v] of Object.entries(params)) if (v) url.searchParams.set(k, v);
-  const res = await fetchWithTimeout(url.toString(), { headers: { Accept: "application/json", "User-Agent": `gomo-mcp/${VERSION}` } });
-  if (!res.ok) throw new Error(`GO MO API ${res.status} for ${url.pathname}${url.search}`);
-  return res.json();
-}
+const readCache = new ReadCache({
+  apiBase: API_BASE,
+  dataDir: new URL("../data/", import.meta.url),
+  timeoutMs: positiveMs("API_TIMEOUT_MS", 10000),
+  refreshMs: positiveMs("MCP_CACHE_REFRESH_MS", 300000),
+  retryMs: positiveMs("MCP_CACHE_RETRY_MS", 60000),
+  maxAgeMs: positiveMs("MCP_CACHE_MAX_AGE_MS", 7 * 86400000),
+  volatileMaxAgeMs: positiveMs("MCP_CACHE_VOLATILE_MAX_AGE_MS", 48 * 3600000),
+});
+const apiGet = (path: string, params: Record<string, string | undefined> = {}) => readCache.get(path, params);
 
 function ok(data: unknown) {
   return { content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }] };
@@ -51,7 +50,7 @@ function fail(err: unknown) {
   return { isError: true, content: [{ type: "text" as const, text: JSON.stringify({ error: message }) }] };
 }
 
-const lang = z.enum(["en", "sv", "all"]).optional().describe('Language filter. "en" (default) = English items, "sv" = Swedish items, "all" = both.');
+const lang = z.enum(["en", "sv", "all"]).optional().describe('Language filter. "en" = English items, "sv" = Swedish items, "all" (default) = both.');
 
 // ── Tool registry (single source for the server and GET /tools) ─────────────
 
@@ -72,7 +71,7 @@ const TOOLS = [
 
 function buildServer(clientIp?: string): McpServer {
   const server = new McpServer({ name: "gomo-group", version: VERSION });
-  const d = (name: string) => TOOLS.find((t) => t.name === name)!.description;
+  const d = (name: string) => TOOLS.find((t) => t.name === name)!.description + " Inspect _meta.freshness: when fallback is true, disclose the snapshot date and do not claim current availability or pricing.";
 
   server.tool("get_company", d("get_company"), {}, async () => {
     try { return ok(await apiGet("company.json")); } catch (e) { return fail(e); }
@@ -109,9 +108,9 @@ function buildServer(clientIp?: string): McpServer {
   });
 
   server.tool("list_insights", d("list_insights"),
-    { lang, topic: z.string().optional().describe("e.g. geo, ai, seo, b2b-marketing, leadership, company"), since: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("ISO date; only posts published on/after") },
-    async ({ lang, topic, since }) => {
-      try { return ok(await apiGet("insights.json", { lang, topic, since })); } catch (e) { return fail(e); }
+    { lang, topic: z.string().optional().describe("e.g. geo, ai, seo, b2b-marketing, leadership, company"), since: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("ISO date; only posts published on/after"), page: z.number().int().min(1).optional(), per_page: z.number().int().min(1).max(200).optional() },
+    async ({ lang, topic, since, page, per_page }) => {
+      try { return ok(await apiGet("insights.json", { lang, topic, since, page: page?.toString(), per_page: per_page?.toString() })); } catch (e) { return fail(e); }
     });
 
   server.tool("list_events", d("list_events"), { lang }, async ({ lang }) => {
@@ -123,9 +122,9 @@ function buildServer(clientIp?: string): McpServer {
   });
 
   server.tool("get_page_index", d("get_page_index"),
-    { lang, type: z.enum(["page", "service", "solution", "case", "insight", "team", "career", "event", "legal"]).optional() },
-    async ({ lang, type }) => {
-      try { return ok(await apiGet("pages.json", { lang, type })); } catch (e) { return fail(e); }
+    { lang, type: z.enum(["page", "service", "solution", "case", "insight", "team", "career", "event", "legal"]).optional(), page: z.number().int().min(1).optional(), per_page: z.number().int().min(1).max(200).optional() },
+    async ({ lang, type, page, per_page }) => {
+      try { return ok(await apiGet("pages.json", { lang, type, page: page?.toString(), per_page: per_page?.toString() })); } catch (e) { return fail(e); }
     });
 
   server.tool(
@@ -159,7 +158,7 @@ function buildServer(clientIp?: string): McpServer {
     },
     async (body) => {
       try {
-        const res = await fetchWithTimeout(`${API_BASE}/contact.json`, {
+        const data = await fetchJson(`${API_BASE.replace(/\/+$/, "")}/contact.json`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -168,11 +167,14 @@ function buildServer(clientIp?: string): McpServer {
             ...(MCP_SHARED_SECRET && clientIp ? { "X-GOMO-MCP-Key": MCP_SHARED_SECRET, "X-GOMO-Client-IP": clientIp } : {}),
           },
           body: JSON.stringify(body),
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) return fail(new Error(`Contact submission rejected (${res.status}): ${JSON.stringify(data)}`));
-        return ok(data);
-      } catch (e) { return fail(e); }
+        }, API_TIMEOUT);
+        const receipt = z.object({ status: z.enum(["received", "duplicate"]), lead_id: z.string().min(1), message: z.string() }).passthrough().safeParse(data);
+        if (!receipt.success) throw new Error("Upstream returned no valid contact receipt");
+        return ok(receipt.data);
+      } catch (e) {
+        const reason = e instanceof Error ? e.message : "Upstream unavailable";
+        return fail(new Error(`Contact delivery is unconfirmed: ${reason}. No cached success was used. Do not automatically retry; contact hello@gomogroup.com if uncertain.`));
+      }
     },
   );
 
@@ -190,10 +192,14 @@ app.use(express.json({ limit: "32kb" }));
 const limiter = rateLimit({ windowMs: 60 * 1000, max: 100, standardHeaders: true, legacyHeaders: false });
 
 // Health and discovery live under /mcp/ so they work behind the same Nginx location.
-const health = (_req: Request, res: Response) => { res.json({ status: "ok", name: "gomo-group", version: VERSION, api_base: API_BASE }); };
+const health = (_req: Request, res: Response) => { res.json({ status: "ok", name: "gomo-group", version: VERSION, api_base: API_BASE, reads: readCache.status(), contact: "live-only; not checked by health" }); };
 const tools = (_req: Request, res: Response) => { res.json({ name: "gomo-group", version: VERSION, transport: "streamable-http", endpoint: "https://agent-mcp.gomogroup.com/mcp", tools: TOOLS }); };
 app.get(["/health", "/mcp/health"], health);
 app.get(["/tools", "/mcp/tools"], tools);
+app.get(["/ready", "/mcp/ready"], (_req: Request, res: Response) => {
+  const state = readCache.status();
+  res.status(state.ready ? 200 : 503).json(state);
+});
 
 app.all("/mcp", limiter, async (req: Request, res: Response) => {
   const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });

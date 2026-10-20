@@ -1,0 +1,63 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "sr-paid-marketing-analyst",
+      "title": "Sr. Paid Marketing Analyst",
+      "title_sv": null,
+      "location": "Pune, India",
+      "employmentType": null,
+      "posted": "August 2026",
+      "summary": "Senior paid media role running and optimizing Google Ads, Meta, LinkedIn and Microsoft Ads campaigns for B2B clients, with strategy, budget forecasting and client reporting. Requires 2-3 years of paid ads experience (2+ hands-on with Google Ads) and use of AI tools; candidates must live in or relocate to Pune.",
+      "url": "https://www.gomogroup.com/en/career/sr-paid-marketing-analyst/",
+      "url_sv": null,
+      "apply_url": "https://www.gomogroup.com/en/career-form/?job=sr-paid-marketing-analyst",
+      "apply_url_sv": "https://www.gomogroup.com/karriar-form/"
+    },
+    {
+      "id": "jr-recruitment-specialist",
+      "title": "Jr. Recruitment Specialist",
+      "title_sv": null,
+      "location": "Pune, India",
+      "employmentType": null,
+      "posted": "August 2026",
+      "summary": "Junior recruitment role covering candidate sourcing, screening calls, interview coordination and HR and onboarding support. Requires 0-1 year of recruitment experience; candidates must live in or relocate to Pune.",
+      "url": "https://www.gomogroup.com/en/career/jr-recruitment-specialist/",
+      "url_sv": null,
+      "apply_url": "https://www.gomogroup.com/en/career-form/?job=jr-recruitment-specialist",
+      "apply_url_sv": "https://www.gomogroup.com/karriar-form/"
+    },
+    {
+      "id": "sr-seo-analyst",
+      "title": "Sr. SEO Analyst",
+      "title_sv": null,
+      "location": "Pune, India",
+      "employmentType": null,
+      "posted": "August 2025",
+      "summary": "Senior SEO role covering keyword research, website diagnosis, strategy and performance reporting for Fortune B2B and international clients, working with the team in Sweden. Requires at least 1.5 years of hands-on SEO experience; candidates must live in or relocate to Pune.",
+      "url": "https://www.gomogroup.com/en/career/sr-seo-analyst/",
+      "url_sv": null,
+      "apply_url": "https://www.gomogroup.com/en/career-form/?job=sr-seo-analyst",
+      "apply_url_sv": "https://www.gomogroup.com/karriar-form/"
+    }
+  ],
+  "pagination": {
+    "total": 3,
+    "page": 1,
+    "per_page": 3,
+    "pages": 1
+  },
+  "_meta": {
+    "source": "https://www.gomogroup.com/agent/v1/careers.json",
+    "endpoint": "careers",
+    "canonical": "https://www.gomogroup.com",
+    "api": "https://www.gomogroup.com/agent/v1",
+    "generated": "2026-10-19T00:00:00+00:00",
+    "version": "1.3.0",
+    "languages": [
+      "en",
+      "sv"
+    ],
+    "license": "Content © GO MO Group AB. Cite gomogroup.com as the source; do not alter or fabricate figures."
+  }
+}

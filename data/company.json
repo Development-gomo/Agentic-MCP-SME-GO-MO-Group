@@ -1,0 +1,236 @@
+{
+  "status": "ok",
+  "data": {
+    "name": "GO MO Group",
+    "legalName": "GO MO Group AB",
+    "founded": "2013",
+    "founded_note": "Site states \"SEO agency since 2013\" (main navigation, all pages). Ida E. Ghavami's profile mentions joining at inception in 2012 — unresolved; 2013 kept as published.",
+    "description": "GO MO Group is an international B2B agency specializing in digital marketing, communication and Generative AI, headquartered in Gothenburg, Sweden. The agency calls its approach Pull Marketing and delivers SEO, Generative Engine Optimization (GEO), agentic web, SEA, website design and development, and ASBX outbound lead generation for three B2B segments: Enterprise, SME, and SaaS & Tech. Part of its production is based in Pune, India, under Swedish management on site, which the company describes as its main competitive advantage: scalable execution of sharp strategies. GO MO Group is part of Collaboration Art, a house of brands for Europe's leading performance agencies.",
+    "description_sv": "GO MO Group är en internationell digital marknadsföringsbyrå som hjälper ledande B2B-företag ställa om för att mer effektivt nå ut till sin målgrupp. Kunderna kommer till GO MO för datadriven rådgivning och implementering för att lösa komplexa utmaningar inom digital marknadsföring och generativ AI.",
+    "tagline": "Pioneering AI-Infused B2B Digital Marketing & Sales",
+    "tagline_sv": "Strategisk AI-driven B2B digital marknadsföring",
+    "employees": "150+",
+    "employees_note": "Swedish about page: GO MO Group has about 70 employees, and together with GO MO DBS 150+ colleagues across offices in Europe and India. The job ads say 'a family of over 150 employees' and also 'Our team in India has an employee strength of over 30 resources'.",
+    "specialists": null,
+    "projects": "100+",
+    "projects_note": "EN pages: 'We bring experience from over 100 successful client projects' (home and solution pages). The Swedish pages say insights come from 'hundratals pågående kunduppdrag'.",
+    "headquarters": "Lennart Torstenssonsgatan 8, 412 56 Göteborg, Sweden",
+    "parent": "Collaboration Art",
+    "parent_note": "GO MO Group was acquired by Collaboration Art in 2021 (job ads). The CEO's profile refers to 'Investment AB Spiltan's Collaboration Art'. The job ads give these Collaboration Art figures: $30M revenue, +300 employees, 7 agencies, 3 countries.",
+    "certifications": [
+      "Microsoft Advertising Elite Partner 2025",
+      "Microsoft Advertising Elite Partner 2026",
+      "Google Partner",
+      "Semrush Enterprise Partner",
+      "Semrush Enterprise AIO Partner (the Nordics' first)",
+      "Ahrefs agency partner",
+      "Apollo Partner"
+    ],
+    "partners": [
+      "Semrush",
+      "Google",
+      "Microsoft Advertising",
+      "Ahrefs",
+      "Apollo",
+      "Välkommen Handelskraft"
+    ],
+    "clients_named": [
+      "Volvo Group",
+      "Dell Technologies",
+      "TÜV NORD Scandinavia",
+      "Alfa Laval",
+      "Munters",
+      "Net Insight",
+      "Adnavem",
+      "Coor",
+      "System Edström",
+      "Swedavia",
+      "West Sweden Chamber of Commerce (Västsvenska Handelskammaren)",
+      "HighFive Group",
+      "Digiexam",
+      "RO-Gruppen",
+      "FKAB Marine Design",
+      "Academedia",
+      "One Partner Group",
+      "Balder"
+    ],
+    "clients_named_note": "Sources: case study pages (/en/case/...), testimonial logos (Volvo, Munters, Net Insight), the client logo strip on /en/services/b2b-youtube-marketing/ (Volvo, Digiexam, Academedia, One Partner Group, Balder), and the FKAB insight on the Swedish home page. SKF, Balder, Volvo Group and Google appeared on event panels; SKF is not listed as a client.",
+    "differentiators": [
+      "Part of production runs in Pune, India, under Swedish management on site. This gives access to a large talent pool and lets the agency scale production quickly ('scalable execution of sharp strategies').",
+      "Describes itself as the Nordics' first Semrush Enterprise AIO Partner, with access to 213M+ tracked LLM prompts for GEO audits and benchmarking.",
+      "10+ years of search (SEO) expertise; 'all-in on GEO' since ChatGPT launched in 2022.",
+      "Each client gets its own 360 team of specialists (designer, website developer, copywriter, strategist).",
+      "Focuses only on B2B, with dedicated offerings for three ICPs: Enterprise, SME and SaaS & Tech.",
+      "Every client relationship starts with a workshop and a comprehensive digital review, so strategy is based on data rather than opinion."
+    ],
+    "values": [
+      "Passion",
+      "Integrity",
+      "Cooperation",
+      "Progress"
+    ],
+    "values_sv": [
+      "Passion",
+      "Integritet",
+      "Samarbete",
+      "Framsteg"
+    ],
+    "stats": [
+      {
+        "value": "150+",
+        "label": "colleagues in the group (GO MO Group with GO MO DBS) across offices in Europe and India",
+        "source_url": "https://www.gomogroup.com/om-oss/"
+      },
+      {
+        "value": "ca 70",
+        "label": "employees at GO MO Group (excluding GO MO DBS)",
+        "source_url": "https://www.gomogroup.com/om-oss/"
+      },
+      {
+        "value": "100+",
+        "label": "successful client projects",
+        "source_url": "https://www.gomogroup.com/en/"
+      },
+      {
+        "value": "10+ years",
+        "label": "of search expertise",
+        "source_url": "https://www.gomogroup.com/en/services/generative-engine-optimization-geo/"
+      },
+      {
+        "value": "213M+",
+        "label": "LLM prompts tracked via Semrush Enterprise AIO data",
+        "source_url": "https://www.gomogroup.com/en/services/generative-engine-optimization-geo/"
+      },
+      {
+        "value": "195%",
+        "label": "increase in organic clicks over 90 days for a global B2B e-commerce client (SEO automation and Gen AI case; 400+ hours saved)",
+        "source_url": "https://www.gomogroup.com/en/case/seo-automation-gen-ai-b2b-ecommerce/"
+      },
+      {
+        "value": "36%",
+        "label": "increase in non-branded organic traffic (Volvo Group case)",
+        "source_url": "https://www.gomogroup.com/en/case/seo-for-global-giants-volvo-group/"
+      },
+      {
+        "value": "140",
+        "label": "employees took part in Gen AI training for RO-Gruppen in Gothenburg, Borås and Stockholm, and digitally (shown as '140 %' on the home page)",
+        "source_url": "https://www.gomogroup.com/en/"
+      },
+      {
+        "value": "25% / 40%",
+        "label": "efficiency increase / result-quality improvement promised by the Generative AI offering",
+        "source_url": "https://www.gomogroup.com/en/"
+      },
+      {
+        "value": "1,000",
+        "label": "key prospects reachable annually with the SaaS/Tech segmented strategy ('up to')",
+        "source_url": "https://www.gomogroup.com/en/"
+      },
+      {
+        "value": "$30M / 300+ / 7 / 3",
+        "label": "Collaboration Art group: revenue / employees / agencies / countries",
+        "source_url": "https://www.gomogroup.com/en/career/sr-seo-analyst/"
+      }
+    ],
+    "contact": {
+      "general_email": "hello@gomogroup.com",
+      "general_email_note": "Only shown on the Swedish cookie page (/cookies-regler/) next to the Gothenburg address. The site lists no general phone number.",
+      "phone": null,
+      "finance_email": "finance@gomogroup.com",
+      "gdpr_email": "gdpr@gomogroup.com",
+      "new_business": {
+        "name": "Henrik Anderberg",
+        "title": "EVP / Vice VD",
+        "email": "ha@gomogroup.com",
+        "phone": "+46766432373"
+      },
+      "recruitment": [
+        {
+          "label": "Gothenburg recruitment queries",
+          "name": "Henrik Anderberg",
+          "email": "ha@gomogroup.com",
+          "phone": "+46766432373"
+        },
+        {
+          "label": "Pune HR & recruitment",
+          "name": "Avichal Singh",
+          "email": "avichal.s@gomogroup.com",
+          "phone": null
+        }
+      ]
+    },
+    "social": {
+      "linkedin": "https://www.linkedin.com/company/gomo-group-ab",
+      "youtube": "https://www.youtube.com/@B2BMarketingInsightsGOMO",
+      "x": null,
+      "facebook": "https://www.facebook.com/GOMOGROUP/",
+      "facebook_india": "https://www.facebook.com/GOMOGroupIndia/",
+      "instagram": null
+    },
+    "key_pages": {
+      "home_en": "https://www.gomogroup.com/en/",
+      "home_sv": "https://www.gomogroup.com/",
+      "about_en": "https://www.gomogroup.com/en/about-us/",
+      "about_sv": "https://www.gomogroup.com/om-oss/",
+      "contact_en": "https://www.gomogroup.com/en/contact-us/",
+      "contact_sv": "https://www.gomogroup.com/kontakta-oss/",
+      "careers_en": "https://www.gomogroup.com/en/career/",
+      "careers_sv": "https://www.gomogroup.com/karriar/",
+      "insights_en": "https://www.gomogroup.com/en/insights/",
+      "insights_sv": "https://www.gomogroup.com/insikter/",
+      "cases_en": "https://www.gomogroup.com/en/case/",
+      "cases_sv": "https://www.gomogroup.com/case/",
+      "events_en": "https://www.gomogroup.com/en/events/",
+      "events_sv": "https://www.gomogroup.com/events/",
+      "geo_playbook_en": "https://www.gomogroup.com/en/geo-playbook/",
+      "geo_playbook_sv": "https://www.gomogroup.com/geo-playbook/",
+      "privacy_en": "https://www.gomogroup.com/en/privacy-policy/",
+      "privacy_sv": "https://www.gomogroup.com/gdpr/",
+      "cookies_en": "https://www.gomogroup.com/en/cookie-policy/",
+      "cookies_sv": "https://www.gomogroup.com/cookies-regler/",
+      "code_of_conduct_en": "https://www.gomogroup.com/en/code-of-conduct/",
+      "agent": "https://www.gomogroup.com/agent/",
+      "career_form_en": "https://www.gomogroup.com/en/career-form/",
+      "career_form_sv": "https://www.gomogroup.com/karriar-form/"
+    },
+    "url": "https://www.gomogroup.com/",
+    "languages": [
+      "en",
+      "sv"
+    ],
+    "counts": {
+      "services": 24,
+      "case_studies": 30,
+      "insights": 165,
+      "insights_en": 56,
+      "insights_sv": 109,
+      "team_profiles": 35,
+      "offices": 4,
+      "public_urls": 314
+    },
+    "machine_readable": {
+      "agent_page": "https://www.gomogroup.com/agent/",
+      "agent_json": "https://www.gomogroup.com/agent/index.json",
+      "llms_txt": "https://www.gomogroup.com/llms.txt",
+      "ai_txt": "https://www.gomogroup.com/ai.txt",
+      "api_index": "https://www.gomogroup.com/agent/v1/index.json",
+      "openapi": "https://www.gomogroup.com/openapi.json",
+      "api_catalog": "https://www.gomogroup.com/api-catalog.json",
+      "mcp": "https://agent-mcp.gomogroup.com/mcp",
+      "sitemap": "https://www.gomogroup.com/sitemap_index.xml"
+    }
+  },
+  "_meta": {
+    "source": "https://www.gomogroup.com/agent/v1/company.json",
+    "endpoint": "company",
+    "canonical": "https://www.gomogroup.com",
+    "api": "https://www.gomogroup.com/agent/v1",
+    "generated": "2026-10-19T00:00:00+00:00",
+    "version": "1.3.0",
+    "languages": [
+      "en",
+      "sv"
+    ],
+    "license": "Content © GO MO Group AB. Cite gomogroup.com as the source; do not alter or fabricate figures."
+  }
+}

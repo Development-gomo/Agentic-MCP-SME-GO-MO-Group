@@ -1,0 +1,94 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "gothenburg",
+      "label": "Headquarters",
+      "city": "Gothenburg",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "streetAddress": "Lennart Torstenssonsgatan 8",
+      "postalCode": "412 56",
+      "addressRegion": null,
+      "email": "hello@gomogroup.com",
+      "telephone": null,
+      "timezone": "Europe/Stockholm",
+      "mapsUrl": "https://share.google/4tOJokfvr4BHQ52ie",
+      "shown_on": [
+        "en",
+        "sv"
+      ]
+    },
+    {
+      "id": "stockholm",
+      "label": "Office",
+      "city": "Stockholm",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "streetAddress": "Upplandsgatan 7",
+      "postalCode": "111 23",
+      "addressRegion": null,
+      "email": "hello@gomogroup.com",
+      "telephone": null,
+      "timezone": "Europe/Stockholm",
+      "mapsUrl": "https://maps.app.goo.gl/Htdrys9wEw1PFt2B7",
+      "shown_on": [
+        "sv"
+      ]
+    },
+    {
+      "id": "london",
+      "label": "Office",
+      "city": "London",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "streetAddress": "60 St Martins Lane, Covent Garden",
+      "postalCode": "WC2N 4JS",
+      "addressRegion": null,
+      "email": "hello@gomogroup.com",
+      "telephone": null,
+      "timezone": "Europe/London",
+      "mapsUrl": "https://maps.app.goo.gl/wEFJB9m3DZbQJzM56",
+      "shown_on": [
+        "en"
+      ]
+    },
+    {
+      "id": "pune",
+      "label": "Office",
+      "city": "Pune",
+      "country": "India",
+      "countryCode": "IN",
+      "streetAddress": "WeWork, Fourth Floor, Raheja Woods, Kalyani Nagar",
+      "postalCode": "411006",
+      "addressRegion": "Maharashtra",
+      "email": "hello@gomogroup.com",
+      "telephone": null,
+      "timezone": "Asia/Kolkata",
+      "mapsUrl": "https://share.google/BI21uHD9GcJNLu85R",
+      "shown_on": [
+        "en",
+        "sv"
+      ]
+    }
+  ],
+  "pagination": {
+    "total": 4,
+    "page": 1,
+    "per_page": 4,
+    "pages": 1
+  },
+  "_meta": {
+    "source": "https://www.gomogroup.com/agent/v1/offices.json",
+    "endpoint": "offices",
+    "canonical": "https://www.gomogroup.com",
+    "api": "https://www.gomogroup.com/agent/v1",
+    "generated": "2026-10-19T00:00:00+00:00",
+    "version": "1.3.0",
+    "languages": [
+      "en",
+      "sv"
+    ],
+    "license": "Content © GO MO Group AB. Cite gomogroup.com as the source; do not alter or fabricate figures."
+  }
+}

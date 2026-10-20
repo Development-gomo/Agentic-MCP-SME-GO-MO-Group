@@ -1,0 +1,1098 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "agentic-web",
+      "name": "Agentic Web",
+      "name_sv": "Agentic Web",
+      "category": "ai",
+      "tags": [
+        "agentic-web",
+        "llms-txt",
+        "mcp",
+        "structured-data",
+        "ai-agents",
+        "rest-api"
+      ],
+      "summary": "GO MO Group builds a machine-facing 'agentic web' layer on a company's existing domain so AI assistants and agentic browsers can read, cite and act on its business information. The layer has six components: an /agent page, llms.txt, schema.org structured data, a /.well-known API catalogue, a read-only public REST API and an MCP server. A standard build runs about three weeks (audit, build, deploy, verify) and is followed by optional monthly sync; the existing human website is not rebuilt.",
+      "summary_sv": "Den agentiska webben är det maskininriktade lagret av din webbplats – ditt företag som strukturerad data som AI-assistenter och agentiska webbläsare kan läsa, citera och agera utifrån. GO MO bygger lagret på er egen domän, bredvid den befintliga webbplatsen.",
+      "key_points": [
+        "Six components: agent page (/agent), llms.txt, schema.org structured data, API catalogue (/.well-known), public read-only REST API (/api/v1) and MCP server (/mcp)",
+        "Four-step delivery in about three weeks: audit, build, deploy on the client's own domain (robots.txt and ai.txt permissions set), verify and keep in sync monthly",
+        "Measured three ways: Lighthouse/PageSpeed Insights 'Agentic Browsing' category (score out of 3), independent audits by Claude, ChatGPT, Gemini, Grok and Perplexity, and a live MCP test where an agent submits an enquiry with user consent",
+        "First Swedish B2B build: Agentic Browsing 1/3 to 3/3, 5/5 AI platforms rated it agent-friendly, 2/2 agent-submitted leads delivered via MCP, 8+/10 average LLM answer rating",
+        "Google's share of search fell to 75.5% (Statcounter, 2020 vs 2026)",
+        "53% of web traffic is no longer human (Imperva Bad Bot Report, 2026)",
+        "Almost no competitor in industrial B2B has a machine-readable layer today (GO MO Group, market review)",
+        "No website rebuild required: the layer is added alongside the existing site on the same domain"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": [
+          {
+            "name": "Agentic readiness audit",
+            "price_from": null,
+            "includes": "Lighthouse agentic score, model answer review, prioritised gap list"
+          },
+          {
+            "name": "Full agentic web build",
+            "price_from": null,
+            "includes": "Audit included, six components live, about three weeks (marked 'Most chosen')"
+          },
+          {
+            "name": "Build + monthly sync",
+            "price_from": null,
+            "includes": "Build plus content sync, new agent handling and monthly score report"
+          }
+        ]
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/agentic-web/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/agentic-web/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "agentic-web",
+        "agentic-web-services",
+        "b2a",
+        "agentic-optimization"
+      ],
+      "dateModified": "2026-10-15"
+    },
+    {
+      "id": "asbx",
+      "name": "ASBX – B2B Outbound Lead Generation",
+      "name_sv": "ASBX – B2B leadsgenerering",
+      "category": "outbound",
+      "tags": [
+        "asbx",
+        "outbound",
+        "lead-generation",
+        "account-based-marketing",
+        "email-outreach",
+        "linkedin-ads"
+      ],
+      "summary": "ASBX (Account and Segment-Based Experience) is GO MO Group's in-house omnichannel outbound and lead generation service for B2B companies. GO MO handles prospecting according to the client's ICP, segment-specific value propositions, copywriting, A/B testing and landing pages, combining personalised email automation with targeted LinkedIn Ads. It is positioned as an addition to a Pull Marketing strategy, delivering warm leads to the sales team's inbox.",
+      "summary_sv": "ASBX är GO MO:s account- och segmentbaserade outbound-tjänst där vi sköter prospektering enligt er ICP, segmenterade utskick, copywriting och A/B-testning, kombinerat med riktade LinkedIn-annonser.",
+      "key_points": [
+        "Prospecting according to the client's ICP (Ideal Customer Profile)",
+        "Segmented outreach strategies and segment-based value propositions",
+        "Copywriting and A/B testing of email copy by GO MO copywriters",
+        "Landing pages designed and developed for email and LinkedIn campaigns",
+        "Account-based outreach using email marketing automation, combinable with the client's own sales activities",
+        "Multichannel: LinkedIn Ads exposure runs alongside email campaigns so account-level contact is not cold"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/asbx-b2b-outbound-lead-generation/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/asbx-b2b-leadgenerering/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "asbx-b2b-outbound-lead-generation",
+        "asbx-b2b-leadgenerering",
+        "account-and-segment-based-experience",
+        "outbound-lead-generation"
+      ],
+      "dateModified": "2024-07-30"
+    },
+    {
+      "id": "b2b-lead-generation",
+      "name": "B2B Lead Generation (GO MO DBS)",
+      "name_sv": null,
+      "category": "outbound",
+      "tags": [
+        "lead-generation",
+        "outbound",
+        "content-syndication",
+        "data-validation",
+        "go-mo-dbs"
+      ],
+      "summary": "B2B outbound lead generation delivered by GO MO DBS, a sister company within GO MO Group, combining proprietary tools and expertise to find and reach relevant decision-makers. Campaigns follow a defined process from client requirements and data mining through data validation, campaign setup, user engagement and delivery of leads and impression statistics. It is aimed at companies needing large-scale outbound capacity, including global leaders.",
+      "summary_sv": null,
+      "key_points": [
+        "Delivered by GO MO DBS, a sister company within GO MO Group",
+        "Six-step process: client requirements, data mining, data validation, campaign setup, user engagement, delivery",
+        "Content syndication to expand reach",
+        "Data validated before delivery to match campaign objectives and avoid invalid emails",
+        "Leads and impression statistics reported in the client's preferred channel",
+        "Large-scale capacity with quality assurance checks throughout the campaign"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [
+        "enterprise"
+      ],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/b2b-lead-generation/",
+      "url_sv": null,
+      "languages": [
+        "en"
+      ],
+      "aliases": [
+        "b2b-lead-generation",
+        "go-mo-dbs",
+        "dbs-lead-generation"
+      ],
+      "dateModified": "2024-05-17"
+    },
+    {
+      "id": "b2b-youtube-marketing",
+      "name": "B2B YouTube Marketing",
+      "name_sv": "B2B YouTube Marketing",
+      "category": "content",
+      "tags": [
+        "youtube",
+        "video-seo",
+        "geo",
+        "channel-audit",
+        "ai-citations",
+        "organic-growth"
+      ],
+      "summary": "GO MO Group helps B2B companies turn YouTube into an organic growth engine through search-optimised content, channel architecture and AI citation strategy built for long sales cycles. Engagements start with a channel audit and follow a 3-month model: audit and quick wins, architecture and distribution, then GEO and compounding growth. The service covers six areas from strategy and metadata to GEO for YouTube, paid/organic integration and pipeline attribution, and is offered exclusively to B2B companies.",
+      "summary_sv": "GO MO Group hjälper B2B-företag att bygga långsiktig organisk tillväxt på YouTube med sökdrivet innehåll, strategisk optimering och AI-anpassade strategier. Arbetet börjar med en kostnadsfri kanalanalys.",
+      "key_points": [
+        "Six service areas: channel audit, B2B YouTube strategy, channel architecture & metadata, GEO for YouTube, paid + organic integration, reporting & attribution",
+        "3-month engagement model: Month 1 audit & quick wins, Month 2 architecture & distribution, Month 3 GEO & compounding",
+        "2.7B monthly active YouTube users (Google, 2024)",
+        "70% of B2B buyers watch videos throughout their purchase process (LinkedIn B2B Institute)",
+        "~5% of B2B companies actively invest in organic YouTube strategy (GO MO Research, 2025)",
+        "62% of B2B researchers start on YouTube (Google/Ipsos, 2023)",
+        "YouTube is the 3rd most cited source in AI-generated answers, behind Wikipedia and company websites (Semrush AI Toolkit, 2025)",
+        "Free channel audit offered; GO MO responds within one business day"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": [
+          {
+            "name": "Free channel audit",
+            "price_from": 0,
+            "includes": "Assessment of the channel with prioritised recommendations; no commitment"
+          },
+          {
+            "name": "YouTube Audit & Strategy",
+            "price_from": null,
+            "includes": "Listed as a service option on the enquiry form"
+          },
+          {
+            "name": "Audit, Strategy & Implementation",
+            "price_from": null,
+            "includes": "Listed as a service option on the enquiry form"
+          },
+          {
+            "name": "Full YouTube Growth Programme",
+            "price_from": null,
+            "includes": "Listed as a service option on the enquiry form"
+          }
+        ]
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/b2b-youtube-marketing/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/b2b-youtube-marketing/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "b2b-youtube-marketing",
+        "youtube-marketing"
+      ],
+      "dateModified": "2026-07-16"
+    },
+    {
+      "id": "content-marketing",
+      "name": "Content Marketing",
+      "name_sv": "Content Marketing – Innehållsmarknadsföring",
+      "category": "content",
+      "tags": [
+        "content-marketing",
+        "seo-content",
+        "copywriting",
+        "b2b-content",
+        "generative-ai"
+      ],
+      "summary": "GO MO Group produces SEO content for B2B companies, with specialist content writers working closely with SEO analysts so texts serve both human readers and search engines. The focus is deep-dive content for complex B2B industries written from an outside-in, audience-centric perspective. The Swedish page describes a six-step process from content plan and keyword guidelines through research, drafting, client review, implementation and ongoing performance monitoring, with AI tools such as ChatGPT supporting writers.",
+      "summary_sv": "Våra content writers skapar SEO-anpassat B2B-innehåll i nära samarbete med analytiker och kund, med stöd av AI-verktyg som ChatGPT. Läsbarhet för den mänskliga läsaren prioriteras alltid framför SEO-krav.",
+      "key_points": [
+        "Specialist content writers work together with an SEO team on every text",
+        "Focus on deep-dive content for complex B2B products and industries",
+        "Outside-in, audience-centric content strategy built from data",
+        "Six-step process: content plan, analyst keyword/meta/internal-link guidelines, writer research (sometimes client interviews), first draft, client review rounds, implementation with ongoing monitoring",
+        "Writers use AI tools including ChatGPT for topic ideas, headlines, proofreading and faster drafting",
+        "Content delivered from Stockholm and Gothenburg in close collaboration with clients"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/content-marketing/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/content-marketing-innehallsmarknadsforing/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "content-marketing",
+        "content-marketing-innehallsmarknadsforing",
+        "innehallsmarknadsforing"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "demand-generation",
+      "name": "Demand Generation (Online Acceleration)",
+      "name_sv": null,
+      "category": "outbound",
+      "tags": [
+        "demand-generation",
+        "abm",
+        "content-syndication",
+        "intent-data",
+        "lead-nurturing",
+        "marketing-automation"
+      ],
+      "summary": "Demand Generation with Online (Audience) Acceleration is a full-funnel B2B service that takes prospects from awareness to acquisition. It combines account-based marketing, content syndication, lead capture, intent-based nurturing and measurement, integrating inbound (pull) and outbound (push) tactics. Intent data is used to prioritise in-market audiences, and performance is tracked on traffic, lead quality, conversion rates, customer acquisition cost and ROI.",
+      "summary_sv": null,
+      "key_points": [
+        "Key features: targeted account (ABM), content syndication, lead generation, intent nurturing, measurable results",
+        "Uses intent data to target companies actively researching topics related to the client's offering",
+        "Combines inbound (pull) and outbound (push) tactics across email, social, content, SEO, PPC, podcasts, webinars and events",
+        "Foundations: buyer personas, audience segmentation and customer journey mapping",
+        "Marketing automation and CRM for lead scoring, nurturing sequences and reporting",
+        "Tracks traffic, lead quality, conversion rates, customer acquisition cost, CLV and ROI; regular A/B testing"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/demand-generation/",
+      "url_sv": null,
+      "languages": [
+        "en"
+      ],
+      "aliases": [
+        "demand-generation",
+        "online-acceleration",
+        "online-audience-acceleration"
+      ],
+      "dateModified": "2026-06-03"
+    },
+    {
+      "id": "digital-analysis-strategy",
+      "name": "Digital Analysis & Strategy Proposal",
+      "name_sv": "Digital marknadsföring: Analys och strategi",
+      "category": "strategy",
+      "tags": [
+        "audit",
+        "digital-strategy",
+        "competitor-analysis",
+        "market-analysis",
+        "roadmap"
+      ],
+      "summary": "Every GO MO Group partnership begins with a data-driven audit of the client's internal and external marketing factors, followed by a strategy proposal and roadmap. Internal factors cover the website's technical structure, content and user experience; external factors are covered by competitor and market analysis. The proposal states the time and resources needed to reach the desired situation and can move quickly into implementation.",
+      "summary_sv": "Vi inleder alla partnerskap med en omfattande nulägesanalys av interna och externa faktorer och tar därefter fram anpassade strategiförslag och handlingsplaner, förstärkt med generativ AI.",
+      "key_points": [
+        "Also titled 'Pull Marketing Audit & Strategy Proposal'",
+        "Audit covers internal factors (technical structure, content, UX) and external factors (competitor and market analysis)",
+        "Always includes a roadmap and strategy proposal showing required time and resources",
+        "Tailored analysis without compromising speed; quick move to implementation",
+        "Swedish page: analysis is reinforced with generative AI and scaled with GO MO's presence in India under Swedish leadership"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/digital-analysis-strategy-proposal/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/digital-analys-och-strategiforslag/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "digital-analysis-strategy-proposal",
+        "digital-analys-och-strategiforslag",
+        "pull-marketing-audit",
+        "nulagesanalys"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "geo",
+      "name": "Generative Engine Optimization (GEO)",
+      "name_sv": "Generative Engine Optimization (GEO)",
+      "category": "ai",
+      "tags": [
+        "geo",
+        "ai-search",
+        "llm-visibility",
+        "ai-citations",
+        "semrush-aio",
+        "ai-overviews"
+      ],
+      "summary": "GO MO Group's GEO service makes B2B brands visible, cited and recommended in AI-generated answers from ChatGPT, Perplexity, Gemini, Microsoft Copilot, Meta AI and Google AI Overviews. GO MO describes itself as the Nordics' first SEMrush Enterprise AIO Partner, using a 213M+ LLM prompt database for benchmarking and AI visibility measurement. Work combines a GEO audit, competitor benchmarking, education of internal teams and structured experiments, sold as published packages from audit through implementation to an enterprise retainer.",
+      "summary_sv": "GEO är strategin för företag som vill fortsätta vara relevanta när AI sammanfattar, rekommenderar och väljer vilka varumärken användare ser först. GO MO kombinerar ett datadrivet arbetssätt med ett experimentellt mindset, benchmarking och intern utbildning.",
+      "key_points": [
+        "Nordics' first SEMrush Enterprise AIO Partner; 213M+ LLM prompts tracked globally across 5 AI engines",
+        "GEO Audit: AI visibility baseline across ChatGPT, Perplexity, Gemini, Copilot & Meta AI, citation analysis, competitor benchmarking, gap analysis, prioritised plan, executive presentation",
+        "Free Mini GEO Audit: 1-page summary of visibility in ChatGPT and Perplexity within 48 hours",
+        "63% of B2B buyers use AI tools like ChatGPT and Perplexity during research (as stated on page, no source given)",
+        "Organic traffic may fall by up to 50% according to some estimates (Swedish page)",
+        "Proven tactics listed include entity/brand profiles, reference content, schema markup, third-party mentions, review signals and Google Business Profile optimisation",
+        "Experiments include Markdown files for agentic crawling, AI-specific landing pages and agentic search optimisation",
+        "Free 12-page GEO Playbook available as a companion resource"
+      ],
+      "pricing": {
+        "model": "published",
+        "currency": "SEK",
+        "tiers": [
+          {
+            "name": "Free Mini GEO Audit",
+            "price_from": 0,
+            "includes": "1-page AI-visibility snapshot (ChatGPT and Perplexity) within 48 hours"
+          },
+          {
+            "name": "LLM Audit & Strategy",
+            "price_from": 23500,
+            "includes": "AI visibility baseline (5 engines), SEMrush AIO benchmarking, gap analysis, action plan, executive presentation, one 2h strategy session. Note: Swedish page lists 'GEO-analys & strategi' at 27,500 SEK (one market, one language, up to three workshops)"
+          },
+          {
+            "name": "Audit, Strategy & Implementation",
+            "price_from": 44000,
+            "includes": "Everything in tier 1 plus ongoing SEMrush AIO monitoring, content creation, citation-building outreach, monthly reporting, dedicated GEO strategist (SV: up to two markets and two languages)"
+          },
+          {
+            "name": "Enterprise Content & GEO Retainer",
+            "price_from": null,
+            "includes": "Custom pricing: AI-powered content supply chain, multi-market and multi-language, dedicated team (SV equivalent: '360°-lösning' with a 12-month plan)"
+          }
+        ]
+      },
+      "segments": [
+        "enterprise",
+        "saas-tech",
+        "sme"
+      ],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/generative-engine-optimization-geo/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/generative-engine-optimization-geo/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "generative-engine-optimization-geo",
+        "generative-engine-optimization",
+        "ai-search-optimization",
+        "llm-optimization"
+      ],
+      "dateModified": "2026-07-20"
+    },
+    {
+      "id": "programmatic-advertising",
+      "name": "Programmatic Advertising",
+      "name_sv": null,
+      "category": "paid",
+      "tags": [
+        "programmatic",
+        "real-time-bidding",
+        "dsp",
+        "machine-learning",
+        "b2b-advertising"
+      ],
+      "summary": "GO MO Group manages programmatic advertising, automating the purchase of ad space with data science, automation and machine learning to reach narrowly defined B2B audiences in real time. Campaigns run through demand-side platforms with real-time bidding and are continuously refined to match clients' purchasing patterns. GO MO positions programmatic as a cornerstone of Pull Marketing and a contributor to B2B lead generation, including C-suite awareness and recruitment use cases.",
+      "summary_sv": null,
+      "key_points": [
+        "Automated ad buying via demand-side platforms (DSP) and real-time bidding against supply-side platforms (SSP)",
+        "Used for B2B targeting of decision-makers and C-suite awareness, and for recruitment/talent acquisition",
+        "Targeting continuously updated to match clients' purchasing patterns",
+        "Managed for both large organisations and small local companies",
+        "Addresses privacy and the phase-out of third-party cookies through data-learning in DSPs/SSPs"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [
+        "enterprise",
+        "sme"
+      ],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/programmatic-advertising/",
+      "url_sv": null,
+      "languages": [
+        "en"
+      ],
+      "aliases": [
+        "programmatic-advertising",
+        "programmatic"
+      ],
+      "dateModified": "2024-05-17"
+    },
+    {
+      "id": "pull-marketing",
+      "name": "Pull Marketing",
+      "name_sv": "Pull-marketing",
+      "category": "strategy",
+      "tags": [
+        "pull-marketing",
+        "inbound",
+        "b2b-buying-process",
+        "seo",
+        "data-driven"
+      ],
+      "summary": "Pull Marketing is GO MO Group's foundational methodology: marketing to individuals and organisations that already have an expressed demand, so the company is visible in the buyer's chosen channel when they search. It is described as especially effective for high-complexity B2B sales with many decision-makers, long time-to-close and larger deals. GO MO combines people and multiple analytical tools, with search engines as the central channel.",
+      "summary_sv": "Pull-marketing innebär att engagera kunder som redan visat intresse för er produkt eller tjänst, så att befintligt behov omvandlas till en konkret förfrågan. GO MO förstärker metoden med generativ AI och datadriven analys.",
+      "key_points": [
+        "94% of all B2B buying processes begin online (Accenture)",
+        "87% of the research process takes place via Google/search engines (PostNord)",
+        "Search engines are part of 94% of all B2B buying processes",
+        "Especially effective for complex sales: more decision-makers, long time-to-close, larger deals",
+        "Prioritises qualitative pull strategies over quantitative push campaigns",
+        "Swedish page: generative AI is used to understand and predict customer behaviour"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/pull-marketing/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/pull-marketing/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "pull-marketing",
+        "inbound-marketing"
+      ],
+      "dateModified": "2024-10-07"
+    },
+    {
+      "id": "sea",
+      "name": "SEA – Search Engine Advertising",
+      "name_sv": "SEA – Sökmotorannonsering",
+      "category": "paid",
+      "tags": [
+        "sea",
+        "google-ads",
+        "ppc",
+        "search-intent",
+        "paid-search"
+      ],
+      "summary": "GO MO Group plans and manages search engine advertising through Google Ads, buying visibility on specific search phrases to reach B2B buyers when they are looking for solutions. Campaigns are planned around search intent rather than audience, start with a data-driven audit of the website and competitors' paid keywords, and are optimised through daily, weekly and monthly tasks. SEA is combined with SEO and the wider digital strategy and supports both branding and sales goals.",
+      "summary_sv": "Vi garanterar er synlighet på Google med sökmotorannonsering baserad på data, med kampanjer som optimeras dagligen, veckovis och månatligen och planeras efter intentioner snarare än målgrupper.",
+      "key_points": [
+        "Search engine advertising via Google Ads",
+        "Market towards search intentions, not audiences",
+        "Every engagement starts with an audit including competitors' paid keywords and performance forecasts",
+        "Agile, iterative optimisation through daily, weekly and monthly tasks with continuous reporting",
+        "Works for both branding and sales objectives",
+        "Teams of specialists scaled to client needs rather than a single generalist"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/sea-search-engine-advertising/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/sea-sokmotorannonsering/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "sea-search-engine-advertising",
+        "sea-sokmotorannonsering",
+        "search-engine-advertising",
+        "sokmotorannonsering",
+        "google-ads"
+      ],
+      "dateModified": "2026-03-11"
+    },
+    {
+      "id": "seo",
+      "name": "SEO – Search Engine Optimization",
+      "name_sv": "SEO – Sökmotoroptimering",
+      "category": "search",
+      "tags": [
+        "seo",
+        "b2b-seo",
+        "technical-seo",
+        "international-seo",
+        "generative-ai"
+      ],
+      "summary": "GO MO Group is a B2B SEO agency that makes companies visible to decision-makers searching on Google. Every engagement starts with a marketing audit of internal and external SEO factors, after which technical fixes and content optimised for buyers' search behaviour are implemented. GO MO has experience with cross-market, international SEO and combines several analytical tools and generative AI in its SEO work.",
+      "summary_sv": "Som en modern internationell B2B SEO-byrå hjälper vi kunder att navigera i det nya AI-drivna SEO-landskapet med datadriven sökmotoroptimering förstärkt med generativ AI.",
+      "key_points": [
+        "Search engines are part of 94% of all B2B buying processes",
+        "All partnerships begin with an audit of internal and external SEO factors",
+        "Requires both correct technical implementation and on-page content optimised for buyer search behaviour",
+        "Experience with cross-market and international SEO strategies",
+        "Combines multiple analytical tools for more reliable data than a single source",
+        "Swedish page: generative AI used for faster data analysis, forecasting search trends and content optimisation",
+        "Swedish page: pricing depends on scope; weekly check-ins and monthly reports with all clients"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/seo-search-engine-optimization/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/seo-sokmotorsoptimering/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "seo-search-engine-optimization",
+        "seo-sokmotorsoptimering",
+        "search-engine-optimization",
+        "sokmotoroptimering",
+        "b2b-seo"
+      ],
+      "dateModified": "2024-07-30"
+    },
+    {
+      "id": "website-design",
+      "name": "Website Design (AI-powered design)",
+      "name_sv": "Webbdesign",
+      "category": "web",
+      "tags": [
+        "web-design",
+        "ux-ui",
+        "ai-design",
+        "branding",
+        "creative-ads",
+        "ai-video"
+      ],
+      "summary": "GO MO Group offers AI-powered design services that combine generative AI with human-led creativity to produce on-brand visuals faster and at scale. Deliverables include AI-assisted website design, creative ads, AI-powered videos, AI-generated images, social media content and branding. Work follows a four-step process from briefing to AI-powered exploration, design refinement and delivery with revision rounds.",
+      "summary_sv": "AI-drivna designtjänster som kombinerar automatisering med mänsklig kreativitet för att leverera snabbare, smartare och varumärkesanpassat visuellt innehåll – i stor skala.",
+      "key_points": [
+        "Six offerings: AI website design, creative ads, AI-powered videos, AI-generated images, social media content, branding",
+        "Website design tools include Figma Make, Figma, Uizard, Lovable, Framer and Relume, with human-led UX",
+        "Video tools include Storylane, Runway, Pika, Sora and ElevenLabs",
+        "Four-step process: briefing & alignment, AI-powered exploration, design refinement & strategy, delivery & feedback loop",
+        "All AI output is reviewed and finalised by designers to match brand guidelines",
+        "Revision rounds included"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/website-design/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/webbdesign/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "website-design",
+        "webbdesign",
+        "web-design",
+        "ai-design"
+      ],
+      "dateModified": "2026-05-15"
+    },
+    {
+      "id": "website-development",
+      "name": "Website Development",
+      "name_sv": "Webbutveckling",
+      "category": "web",
+      "tags": [
+        "web-development",
+        "wordpress",
+        "headless-cms",
+        "lovable",
+        "low-code",
+        "nextjs"
+      ],
+      "summary": "GO MO Group builds performance-focused, SEO-optimised websites ranging from microsites to enterprise platforms, on headless CMS, Lovable, WordPress or low-code/no-code platforms. It also delivers complex solutions such as e-commerce, multilingual sites, CRM/ERP integrations and booking platforms. A typical project takes about two months from design approval to launch, following a four-step process ending in QA, launch, migration and post-launch support.",
+      "summary_sv": "Vi bygger högpresterande och SEO-optimerade webbplatser – från mindre microsajter till stora företagsplattformar – i headless CMS, Lovable, WordPress eller low-code/no-code.",
+      "key_points": [
+        "Platforms: headless CMS, Lovable, WordPress, low-code/no-code CMS",
+        "Tools listed: ChatGPT, Next.js, Lovable, Wix, WordPress, GitHub, Tailwind CSS, Vercel",
+        "Complex builds: e-commerce, multilingual sites, CRM and ERP integration, booking platforms",
+        "Typical timeline about 2 months from design approval to launch; e-commerce or SaaS sites may take longer",
+        "Four steps: design and approval, template development, content creation & integration (SEO best practice), final QA, launch & post-migration",
+        "Clients range from startups to established companies in SaaS, e-commerce, B2B and corporate sectors"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [
+        "enterprise",
+        "saas-tech"
+      ],
+      "related_cases": [],
+      "url": "https://www.gomogroup.com/en/services/website-development/",
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/webbutveckling/",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "aliases": [
+        "website-development",
+        "webbutveckling",
+        "website-design-and-development",
+        "hemsida-design-och-utveckling",
+        "web-development"
+      ],
+      "dateModified": "2026-04-27"
+    },
+    {
+      "id": "sem",
+      "name": "SEM – Search Engine Marketing",
+      "name_sv": "SEM (Sökmotorsmarknadsföring)",
+      "category": "search",
+      "tags": [
+        "sem",
+        "seo",
+        "sea",
+        "search-marketing",
+        "b2b"
+      ],
+      "summary": "Swedish-language service page on search engine marketing (SEM), which GO MO Group defines as covering both paid search ads (SEA) and organic results (SEO). GO MO works in teams of SEA and SEO specialists at strategic and operational level, offering either targeted efforts or a holistic search marketing strategy. All strategies are data-based and implementation is followed up continuously.",
+      "summary_sv": "Vi hjälper ditt företag att stänga gapet mellan marknadsföring och sälj genom sökmotormarknadsföring baserad på tillförlitlig data, med team av specialister inom SEA och SEO.",
+      "key_points": [
+        "SEM defined as covering both paid ads (SEA) and organic search results (SEO)",
+        "Search engines are part of about 94% of all B2B buying processes",
+        "Teams of SEA and SEO specialists at strategic and operational level, scalable to need",
+        "Clients named on the page include Volvo Group, Remondis, Coor and Adnavem",
+        "Data-based strategies with continuous follow-up of implementation"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/sem-sokmotorsmarknadsforing/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "sem-sokmotorsmarknadsforing",
+        "search-engine-marketing",
+        "sokmotorsmarknadsforing"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "digital-marketing",
+      "name": "Digital Marketing",
+      "name_sv": "Digital marknadsföring",
+      "category": "strategy",
+      "tags": [
+        "digital-marketing",
+        "b2b-marketing",
+        "generative-ai",
+        "pull-marketing",
+        "seo",
+        "sea"
+      ],
+      "summary": "Swedish-language overview page for GO MO Group's B2B digital marketing, combining human expertise with generative AI. It describes AI-supported Pull Marketing services including SEO, SEA, email marketing and website-based lead generation, together with web development and design, digital analysis and B2B lead generation. GO MO cites experience from over 100 client projects.",
+      "summary_sv": "GO MO Group kombinerar mänsklig kreativitet och insikter med generativ AI för att leverera skräddarsydda och effektiva digitala strategier för B2B-marknaden.",
+      "key_points": [
+        "Generative AI integrated into Pull Marketing services, SEO and SEA",
+        "Experience from over 100 client projects",
+        "Covers SEO, SEA, email marketing, website lead generation, web development and design, digital analysis and B2B lead generation",
+        "Search engines are part of 94% of all B2B buying processes",
+        "Part of production established in India under Swedish management to scale delivery"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/digital-marknadsforing/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "digital-marknadsforing",
+        "digital-marketing-services"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "wordpress-development",
+      "name": "WordPress Web Development",
+      "name_sv": "Webbutveckling i WordPress",
+      "category": "web",
+      "tags": [
+        "wordpress",
+        "web-development",
+        "web-design",
+        "seo",
+        "cms"
+      ],
+      "summary": "Swedish-language page for GO MO Group's WordPress development and design service. Every site starts with an analysis, is built with SEO optimisation and user-friendliness in focus, and the client is guided to manage content themselves after launch. GO MO states it has built over 400 WordPress websites over nearly a decade with a team of more than 60 people.",
+      "summary_sv": "Som webbyrå specialiserad på WordPress-utveckling erbjuder vi ett skalbart team och omfattande erfarenhet för att skapa moderna, användarvänliga och SEO-optimerade hemsidor.",
+      "key_points": [
+        "Over 400 websites built in WordPress",
+        "Nearly ten years (close to a decade) of experience with proven processes",
+        "Team of more than 60 people with specialist skills",
+        "Every project starts with a data-driven analysis",
+        "SEO optimisation built into WordPress development",
+        "Clients are guided to manage content in WordPress after launch"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/webbutveckling-i-wordpress/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "webbutveckling-i-wordpress",
+        "wordpress"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "digital-agency-gothenburg",
+      "name": "Digital Marketing Agency Gothenburg",
+      "name_sv": "Digital byrå i Göteborg",
+      "category": "local",
+      "tags": [
+        "gothenburg",
+        "digital-agency",
+        "b2b-marketing",
+        "pull-marketing",
+        "local"
+      ],
+      "summary": "Swedish-language local landing page presenting GO MO Group as a B2B digital marketing agency rooted in Gothenburg. It describes Pull Marketing services (SEO, SEA, UI/UX optimisation) for B2B and industrial companies, delivered by teams tailored to each client's needs and budget, combining generative AI with human expertise.",
+      "summary_sv": "GO MO Group är en internationell aktör med rötter i Göteborg, specialiserad på digital marknadsföring för B2B- och industriföretag, med ett skalbart upplägg anpassat efter kundens behov och budget.",
+      "key_points": [
+        "Specialised in marketing for B2B and industrial companies",
+        "Moved into renovated offices at Näckrosdammen near Avenyn in spring 2023",
+        "Pull Marketing across SEO, SEA and UI/UX optimisation",
+        "Teams tailored to each client's needs and budget; clients kept continuously updated on performance",
+        "Combines generative AI and human expertise"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/digital-marknadsforingsbyra-goteborg/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "digital-marknadsforingsbyra-goteborg",
+        "digital-byra-goteborg"
+      ],
+      "dateModified": "2024-06-14"
+    },
+    {
+      "id": "digital-agency-stockholm",
+      "name": "Digital Marketing Agency Stockholm",
+      "name_sv": "Digital marknadsföringsbyrå Stockholm",
+      "category": "local",
+      "tags": [
+        "stockholm",
+        "digital-agency",
+        "b2b-marketing",
+        "pull-marketing",
+        "local"
+      ],
+      "summary": "Swedish-language local landing page for GO MO Group as a B2B digital marketing agency serving companies in Stockholm. GO MO forms tailored expert teams, starts with an analysis of the company and market, and applies AI tools and agile methods with regular follow-up meetings and reporting. It targets both Swedish-market growth and global expansion for small and large companies.",
+      "summary_sv": "GO MO Group bistår företag i Stockholm med omfattande, datadrivna marknadsföringsstrategier – från djupgående analyser till konkreta resultat – med skräddarsydda expertteam.",
+      "key_points": [
+        "Tailored teams of experts based on each client's needs",
+        "Process starts with an analysis of the company and its market",
+        "Agile methods with continuous feedback, regular follow-up meetings and in-depth reporting",
+        "Specialised in Pull Marketing with AI-driven solutions",
+        "Serves both small and large companies, domestic and global"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [
+        "enterprise",
+        "sme"
+      ],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/digital-marknadsforingsbyra-stockholm/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "digital-marknadsforingsbyra-stockholm",
+        "digital-byra-stockholm"
+      ],
+      "dateModified": "2024-06-14"
+    },
+    {
+      "id": "google-ads-gothenburg",
+      "name": "Google Ads Agency Gothenburg",
+      "name_sv": "Google Ads Göteborg",
+      "category": "local",
+      "tags": [
+        "google-ads",
+        "sea",
+        "sem",
+        "gothenburg",
+        "local"
+      ],
+      "summary": "Swedish-language local landing page for GO MO Group's Google Ads management. GO MO assigns each client a tailored team of specialists, uses AI to analyse large data sets and optimise campaigns, and works with data-driven, agile processes as a Google Partner. Note: although the URL targets Gothenburg, the page's headline and intro refer to Google Ads in Stockholm.",
+      "summary_sv": "Maximera er online-synlighet med Google Ads och effektiv sökmotorannonsering genom GO MO Group, med datadrivna strategier och skräddarsydda kampanjer.",
+      "key_points": [
+        "Google Ads campaigns on specific keywords to reach buyers at the moment of intent",
+        "Each client gets a tailored team with different specialist skills",
+        "AI used to analyse large data volumes and identify optimisation opportunities",
+        "Google Partner with access to training, beta programmes and a direct line to Google",
+        "Data-driven, agile optimisation for conversions and ROI"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/google-ads-goteborg/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "google-ads-goteborg"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "seo-agency-gothenburg",
+      "name": "SEO Agency Gothenburg",
+      "name_sv": "B2B SEO-byrå Göteborg",
+      "category": "local",
+      "tags": [
+        "seo",
+        "gothenburg",
+        "b2b-seo",
+        "local",
+        "ai"
+      ],
+      "summary": "Swedish-language local landing page for GO MO Group's SEO services in Gothenburg, drawing on knowledge of the B2B market in Västra Götaland and a focus on B2B and industry. GO MO integrates AI into its SEO process and assigns a dedicated project manager who acts as strategist and change leader.",
+      "summary_sv": "Som grundat i hjärtat av Göteborg har GO MO Group djupgående kunskaper om B2B-marknaden i Västra Götaland och skräddarsyr SEO-strategier för lokala behov.",
+      "key_points": [
+        "Founded in Gothenburg with focus on B2B and industry in Västra Götaland",
+        "AI integrated into the SEO process",
+        "Over 100 experts (page also states over 60 dedicated SEO specialists)",
+        "Dedicated project manager acting as strategist and change leader",
+        "Google Partner"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/seo-byra-goteborg/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "seo-byra-goteborg"
+      ],
+      "dateModified": "2024-06-14"
+    },
+    {
+      "id": "seo-agency-stockholm",
+      "name": "SEO Agency Stockholm",
+      "name_sv": "SEO-byrå Stockholm",
+      "category": "local",
+      "tags": [
+        "seo",
+        "sea",
+        "stockholm",
+        "local",
+        "pull-marketing"
+      ],
+      "summary": "Swedish-language local landing page for GO MO Group as a digital SEO agency in Stockholm, specialising in pull marketing including SEO and SEA. Engagements begin with a current-situation analysis, GO MO acts as an extension of the client's marketing department, and each client gets a dedicated project manager. It serves companies of all sizes, locally or globally.",
+      "summary_sv": "Som digital SEO-byrå i Stockholm är GO MO Group expert på pull-marketing, inklusive SEA och SEO, och fungerar som en förlängd arm till er marknadsavdelning.",
+      "key_points": [
+        "Specialised in pull marketing including SEO and SEA, with focus on Google",
+        "About 94% of consumers' purchase decisions start with an online search (as stated on page)",
+        "Offices in Sweden, India and the UK; over 100 experts",
+        "SEO team of over 60 specialists; dedicated project manager per client",
+        "All partnerships start with a current-situation analysis",
+        "Google Partner"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [
+        "enterprise",
+        "sme"
+      ],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/seo-byra-stockholm/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "seo-byra-stockholm"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "web-agency-gothenburg",
+      "name": "Web Agency Gothenburg",
+      "name_sv": "Webbyrå Göteborg",
+      "category": "local",
+      "tags": [
+        "web-agency",
+        "wordpress",
+        "gothenburg",
+        "local",
+        "web-design"
+      ],
+      "summary": "Swedish-language local landing page for GO MO Group as a web agency in Gothenburg specialising in WordPress, combining data-driven processes with AI. Projects start with a marketing analysis of SEO factors, and pricing is set per project based on scope, number of pages and content volume.",
+      "summary_sv": "Som ledande webbyrå i Göteborg specialiserad på WordPress kombinerar GO MO Group datadrivna processer med AI-teknologi för att skapa webbplatser som speglar ert varumärke.",
+      "key_points": [
+        "Specialised in WordPress with AI integration",
+        "Over 400 websites designed and developed in WordPress over more than a decade",
+        "Every project starts with a marketing analysis of internal and external SEO factors",
+        "Pricing based on scope, number of pages and content volume; detailed quote on request",
+        "AI and Google data used to improve UX"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/webbyra-goteborg/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "webbyra-goteborg"
+      ],
+      "dateModified": "2026-02-20"
+    },
+    {
+      "id": "web-agency-stockholm",
+      "name": "Web Agency Stockholm",
+      "name_sv": "Webbyrå i Stockholm",
+      "category": "local",
+      "tags": [
+        "web-agency",
+        "wordpress",
+        "stockholm",
+        "local",
+        "web-design"
+      ],
+      "summary": "Swedish-language local landing page for GO MO Group as a full-service web agency in Stockholm building user-friendly, SEO-optimised WordPress websites. Teams in Sweden and Pune, India cover web design, SEO and SEA, and the client is involved through workshops and design approvals. GO MO cites over 400 WordPress sites built for clients ranging from large international B2B companies to SaaS scale-ups.",
+      "summary_sv": "Vi är en full service-webbyrå i Stockholm som tar fram användarvänliga, moderna och SEO-optimerade hemsidor i WordPress som speglar ert varumärke.",
+      "key_points": [
+        "Over 400 websites designed and developed in WordPress over 10 years",
+        "Team of over 60 employees across Sweden and Pune, India",
+        "Clients range from large international B2B companies to SaaS scale-ups",
+        "Process includes several workshops and design proposals for client approval",
+        "Can combine web development with SEO and SEA",
+        "WordPress is used by 43.2% of all websites (as stated on page)"
+      ],
+      "pricing": {
+        "model": "quote-based",
+        "currency": null,
+        "tiers": []
+      },
+      "segments": [
+        "enterprise",
+        "saas-tech"
+      ],
+      "related_cases": [],
+      "url": null,
+      "url_sv": "https://www.gomogroup.com/vara-tjanster/webbyra-stockholm/",
+      "languages": [
+        "sv"
+      ],
+      "aliases": [
+        "webbyra-stockholm"
+      ],
+      "dateModified": "2025-04-28"
+    }
+  ],
+  "pagination": {
+    "total": 24,
+    "page": 1,
+    "per_page": 24,
+    "pages": 1
+  },
+  "_meta": {
+    "source": "https://www.gomogroup.com/agent/v1/services.json",
+    "endpoint": "services",
+    "canonical": "https://www.gomogroup.com",
+    "api": "https://www.gomogroup.com/agent/v1",
+    "generated": "2026-10-19T00:00:00+00:00",
+    "version": "1.3.0",
+    "languages": [
+      "en",
+      "sv"
+    ],
+    "license": "Content © GO MO Group AB. Cite gomogroup.com as the source; do not alter or fabricate figures."
+  }
+}

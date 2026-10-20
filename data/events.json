@@ -1,0 +1,85 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": "b2b-geo-seminar-june-2026",
+      "title": "How to get your brand selected by AI and Agents? GEO in practice.",
+      "title_sv": null,
+      "startDate": "2026-06-10T08:15:00+02:00",
+      "endDate": null,
+      "location": "Stockholm, Sweden (venue not stated)",
+      "format": "in-person",
+      "language": "en",
+      "description": "Exclusive B2B GEO seminar in Stockholm, co-hosted with Semrush, on making a brand visible and selected by AI search and agents. Speakers were Henrik Anderberg, Gabriel Ghavami and Gerald Murphy (Semrush), with a panel featuring Balder, Google and Volvo Group. The page said the event was full, with a waitlist.",
+      "status": "past",
+      "url": "https://www.gomogroup.com/en/event/b2b-geo-seminar-june-2026/",
+      "url_sv": "https://www.gomogroup.com/event/b2b-geo-seminar-june-2026/",
+      "registration_url": null,
+      "speakers": [
+        "Henrik Anderberg (GO MO Group)",
+        "Gabriel Ghavami (GO MO Group)",
+        "Gerald Murphy (Semrush)"
+      ],
+      "price": "Free (event full; waitlist)"
+    },
+    {
+      "id": "b2b-geo-seminar-may-2026",
+      "title": "How to get your brand loved by AI and Agents? GEO in practice",
+      "title_sv": null,
+      "startDate": "2026-05-06T07:30:00+02:00",
+      "endDate": "2026-05-06T11:00:00+02:00",
+      "location": null,
+      "format": "in-person",
+      "language": "en",
+      "description": "Exclusive breakfast seminar, co-hosted with Semrush, introducing GEO and how to make a brand visible and recommended by AI and agents. Speakers were Henrik Anderberg, Gabriel Ghavami and Semrush's Gerald Murphy, followed by a panel with SKF, Balder and Volvo Group.",
+      "status": "past",
+      "url": "https://www.gomogroup.com/en/event/b2b-geo-seminar-may-2026/",
+      "url_sv": null,
+      "registration_url": null,
+      "speakers": [
+        "Henrik Anderberg (GO MO Group)",
+        "Gabriel Ghavami (GO MO Group)",
+        "Gerald Murphy (Semrush)"
+      ],
+      "price": "Free (seat requests reviewed)"
+    },
+    {
+      "id": "b2b-marketing-seminar-for-future-of-search",
+      "title": "How do you get your brand loved by AI and Agents?",
+      "title_sv": null,
+      "startDate": "2026-04-07T07:30:00+02:00",
+      "endDate": "2026-04-07T11:00:00+02:00",
+      "location": "Göteborg, Sweden (venue not stated)",
+      "format": "in-person",
+      "language": "en",
+      "description": "Breakfast seminar on how AI search and LLMs are changing B2B discovery, and what brands must do to be visible and recommended by AI and agents (GEO/AEO/AIO). It covered the move from SEO to GEO and what to measure, a GEO playbook, a roundtable, and optional mini-audit walkthroughs. Henrik Anderberg was the speaker.",
+      "status": "past",
+      "url": "https://www.gomogroup.com/en/event/b2b-marketing-seminar-for-future-of-search/",
+      "url_sv": "https://www.gomogroup.com/event/b2b-marketing-seminar-for-future-of-search/",
+      "registration_url": null,
+      "speakers": [
+        "Henrik Anderberg (GO MO Group)"
+      ],
+      "price": "Free (seat requests reviewed)"
+    }
+  ],
+  "pagination": {
+    "total": 3,
+    "page": 1,
+    "per_page": 3,
+    "pages": 1
+  },
+  "_meta": {
+    "source": "https://www.gomogroup.com/agent/v1/events.json",
+    "endpoint": "events",
+    "canonical": "https://www.gomogroup.com",
+    "api": "https://www.gomogroup.com/agent/v1",
+    "generated": "2026-10-19T00:00:00+00:00",
+    "version": "1.3.0",
+    "languages": [
+      "en",
+      "sv"
+    ],
+    "license": "Content © GO MO Group AB. Cite gomogroup.com as the source; do not alter or fabricate figures."
+  }
+}
