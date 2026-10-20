@@ -1,20 +1,30 @@
+/**
+ * GO MO Group MCP server (v1.3.0)
+ *
+ * Exposes the public gomogroup.com agent API (https://www.gomogroup.com/agent/v1/)
+ * as Model Context Protocol tools over Streamable HTTP, in stateless mode
+ * (a fresh McpServer + transport per request).
+ *
+ * Bilingual: every list tool accepts lang = "en" | "sv" | "all". English is primary;
+ * items carry their Swedish alternate URL where the site has a translation.
+ */
+import express, { type Request, type Response } from "express";
+import rateLimit from "express-rate-limit";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import express, { type Request, type Response as ExpressResponse } from "express";
-import rateLimit from "express-rate-limit";
 import { z } from "zod";
 
-const API_BASE    = process.env.GOMO_API_BASE ?? "https://www.gomogroup.com/agent/v1";
-const PORT        = parseInt(process.env.PORT ?? "3000", 10);
+const VERSION = "1.3.0";
+const API_BASE = process.env.GOMO_API_BASE ?? "https://www.gomogroup.com/agent/v1";
+const PORT = parseInt(process.env.PORT ?? "3000", 10);
 const API_TIMEOUT = parseInt(process.env.API_TIMEOUT_MS ?? "10000", 10);
+// Shared with WordPress (GOMO_MCP_SHARED_SECRET in wp-config.php) so the plugin rate-limits each agent by
+// its own IP instead of treating every MCP submission as coming from this server.
+const MCP_SHARED_SECRET = process.env.GOMO_MCP_SHARED_SECRET ?? "";
 
-// ── REST API helpers ─────────────────────────────────────────────────────────
+// ── HTTP helpers ─────────────────────────────────────────────────────────────
 
-async function fetchWithTimeout(
-  url: string,
-  options: RequestInit = {},
-  timeoutMs = API_TIMEOUT
-): Promise<globalThis.Response> {
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = API_TIMEOUT): Promise<globalThis.Response> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -24,18 +34,11 @@ async function fetchWithTimeout(
   }
 }
 
-async function apiGet(path: string): Promise<unknown> {
-  const res = await fetchWithTimeout(`${API_BASE}${path}`);
-  if (!res.ok) throw new Error(`Upstream API error ${res.status} at ${path}`);
-  return res.json();
-}
-
-async function apiPost(path: string, body: unknown): Promise<unknown> {
-  const res = await fetchWithTimeout(`${API_BASE}${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+async function apiGet(path: string, params: Record<string, string | undefined> = {}): Promise<unknown> {
+  const url = new URL(`${API_BASE}/${path}`);
+  for (const [k, v] of Object.entries(params)) if (v) url.searchParams.set(k, v);
+  const res = await fetchWithTimeout(url.toString(), { headers: { Accept: "application/json", "User-Agent": `gomo-mcp/${VERSION}` } });
+  if (!res.ok) throw new Error(`GO MO API ${res.status} for ${url.pathname}${url.search}`);
   return res.json();
 }
 
@@ -43,200 +46,168 @@ function ok(data: unknown) {
   return { content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }] };
 }
 
-// ── MCP server factory ───────────────────────────────────────────────────────
-// A new server instance is created per request (stateless HTTP transport).
+function fail(err: unknown) {
+  const message = err instanceof Error ? (err.name === "AbortError" ? "Upstream API timed out" : err.message) : String(err);
+  return { isError: true, content: [{ type: "text" as const, text: JSON.stringify({ error: message }) }] };
+}
 
-function buildServer(): McpServer {
-  const server = new McpServer({
-    name:    "go-mo-group",
-    version: "1.0.0",
+const lang = z.enum(["en", "sv", "all"]).optional().describe('Language filter. "en" (default) = English items, "sv" = Swedish items, "all" = both.');
+
+// ── Tool registry (single source for the server and GET /tools) ─────────────
+
+const TOOLS = [
+  { name: "get_company", phase: 1, method: "GET /company.json", description: "GO MO Group company profile: identity, founding, size, certifications, contacts, social links, key pages (EN + SV)." },
+  { name: "list_services", phase: 1, method: "GET /services.json", description: "All services with descriptions, pricing (where published) and EN/SV URLs. Filter by category or tag." },
+  { name: "get_service", phase: 1, method: "GET /services/{id}.json", description: "One service by ID, e.g. 'geo', 'seo', 'pull-marketing'." },
+  { name: "list_case_studies", phase: 1, method: "GET /case-studies.json", description: "Client case studies with measured results. Filter by industry, segment, service or lang." },
+  { name: "get_case_study", phase: 1, method: "GET /case-studies/{id}.json", description: "One case study by ID." },
+  { name: "list_team", phase: 1, method: "GET /team.json", description: "Leadership and team profiles with roles and public contact details." },
+  { name: "list_offices", phase: 1, method: "GET /offices.json", description: "Office addresses (Gothenburg HQ, Stockholm, London, Pune)." },
+  { name: "list_insights", phase: 1, method: "GET /insights.json", description: "Blog/insight articles (EN + SV) with date, author, summary and topic. Filter by lang, topic, since." },
+  { name: "list_events", phase: 1, method: "GET /events.json", description: "Seminars and events with dates, location and registration URLs." },
+  { name: "list_careers", phase: 1, method: "GET /careers.json", description: "Open roles with location and application URL." },
+  { name: "get_page_index", phase: 1, method: "GET /pages.json", description: "Every public URL on gomogroup.com with type, language and its EN/SV alternate." },
+  { name: "submit_contact_inquiry", phase: 2, method: "POST /contact.json", description: "Send a qualified B2B inquiry to GO MO Group. Requires explicit user consent (agent_context.user_authorized_submission = true)." },
+] as const;
+
+function buildServer(clientIp?: string): McpServer {
+  const server = new McpServer({ name: "gomo-group", version: VERSION });
+  const d = (name: string) => TOOLS.find((t) => t.name === name)!.description;
+
+  server.tool("get_company", d("get_company"), {}, async () => {
+    try { return ok(await apiGet("company.json")); } catch (e) { return fail(e); }
   });
 
-  // ── PHASE 1: Read-only tools ─────────────────────────────────────────────
+  server.tool("list_services", d("list_services"),
+    { category: z.string().optional().describe("e.g. search, ai, outbound, web, content, paid"), tag: z.string().optional(), lang },
+    async ({ category, tag, lang }) => {
+      try { return ok(await apiGet("services.json", { category, tag, lang })); } catch (e) { return fail(e); }
+    });
 
-  server.tool(
-    "get_company",
-    "Returns GO MO Group company identity: name, description, founding year, employee count, certifications (Google Partner, Microsoft Advertising Elite Partner, Ahrefs Agency Partner, Semrush Certified Agency Partner), office locations, social media links, and key contact details.",
-    {},
-    async () => ok(await apiGet("/company.json"))
-  );
+  server.tool("get_service", d("get_service"), { id: z.string().regex(/^[a-z0-9-]+$/).describe("Service ID from list_services") },
+    async ({ id }) => {
+      try { return ok(await apiGet(`services/${id}.json`)); } catch (e) { return fail(e); }
+    });
 
-  server.tool(
-    "list_services",
-    "Returns all GO MO Group service offerings. Optionally filter by category (e.g. 'AI Search Visibility', 'Paid Search', 'Lead Generation', 'Web', 'Strategy', 'Content') or tag (e.g. 'geo', 'seo', 'b2b', 'ai-content').",
-    {
-      category: z.string().optional().describe("Filter by service category"),
-      tag:      z.string().optional().describe("Filter by tag"),
-    },
-    async ({ category, tag }) => {
-      const params = new URLSearchParams();
-      if (category) params.set("category", category);
-      if (tag)      params.set("tag", tag);
-      const qs = params.toString() ? `?${params}` : "";
-      return ok(await apiGet(`/services.json${qs}`));
-    }
-  );
+  server.tool("list_case_studies", d("list_case_studies"),
+    { industry: z.string().optional(), segment: z.enum(["enterprise", "saas-tech", "sme"]).optional(), service: z.string().optional().describe("Service ID, e.g. seo, geo, sea"), lang },
+    async ({ industry, segment, service, lang }) => {
+      try { return ok(await apiGet("case-studies.json", { industry, segment, service, lang })); } catch (e) { return fail(e); }
+    });
 
-  server.tool(
-    "get_service",
-    "Returns a single GO MO Group service by ID. Valid IDs: geo, seo, sea, pull-marketing, content-marketing, asbx, go-mo-dbs, web-development, web-design, programmatic, digital-analysis, ai-implementation.",
-    {
-      id: z.string().describe("Service ID"),
-    },
-    async ({ id }) => ok(await apiGet(`/services/${id}.json`))
-  );
+  server.tool("get_case_study", d("get_case_study"), { id: z.string().regex(/^[a-z0-9-]+$/) },
+    async ({ id }) => {
+      try { return ok(await apiGet(`case-studies/${id}.json`)); } catch (e) { return fail(e); }
+    });
 
-  server.tool(
-    "list_case_studies",
-    "Returns GO MO Group client case studies with results and context. Filter by industry (e.g. 'Technology', 'Manufacturing', 'Construction', 'Automotive'), segment ('B2B Enterprise', 'B2B SaaS/Tech', 'B2B SME'), or service ID (e.g. 'seo', 'geo', 'asbx', 'ai-implementation').",
-    {
-      industry: z.string().optional().describe("Filter by industry"),
-      segment:  z.string().optional().describe("Filter by segment: 'B2B Enterprise', 'B2B SaaS/Tech', or 'B2B SME'"),
-      service:  z.string().optional().describe("Filter by service ID"),
-    },
-    async ({ industry, segment, service }) => {
-      const params = new URLSearchParams();
-      if (industry) params.set("industry", industry);
-      if (segment)  params.set("segment", segment);
-      if (service)  params.set("service", service);
-      const qs = params.toString() ? `?${params}` : "";
-      return ok(await apiGet(`/case-studies.json${qs}`));
-    }
-  );
+  server.tool("list_team", d("list_team"), {}, async () => {
+    try { return ok(await apiGet("team.json")); } catch (e) { return fail(e); }
+  });
 
-  server.tool(
-    "get_case_study",
-    "Returns a single case study by ID. Known IDs: construction-1200-romi, fortune500-seo-genai, dell-technologies-asbx, coor-facility-management.",
-    {
-      id: z.string().describe("Case study ID"),
-    },
-    async ({ id }) => ok(await apiGet(`/case-studies/${id}.json`))
-  );
+  server.tool("list_offices", d("list_offices"), {}, async () => {
+    try { return ok(await apiGet("offices.json")); } catch (e) { return fail(e); }
+  });
 
-  server.tool(
-    "list_team",
-    "Returns the GO MO Group leadership team — 8 profiles with roles, email addresses, phone numbers, office locations, and LinkedIn URLs.",
-    {},
-    async () => ok(await apiGet("/team.json"))
-  );
+  server.tool("list_insights", d("list_insights"),
+    { lang, topic: z.string().optional().describe("e.g. geo, ai, seo, b2b-marketing, leadership, company"), since: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("ISO date; only posts published on/after") },
+    async ({ lang, topic, since }) => {
+      try { return ok(await apiGet("insights.json", { lang, topic, since })); } catch (e) { return fail(e); }
+    });
 
-  server.tool(
-    "list_offices",
-    "Returns all GO MO Group offices — Gothenburg (HQ), Stockholm, London, and Pune — with full street addresses, contact details, and timezones.",
-    {},
-    async () => ok(await apiGet("/offices.json"))
-  );
+  server.tool("list_events", d("list_events"), { lang }, async ({ lang }) => {
+    try { return ok(await apiGet("events.json", { lang })); } catch (e) { return fail(e); }
+  });
 
-  // ── PHASE 2: Action tool — requires explicit user consent ────────────────
+  server.tool("list_careers", d("list_careers"), { lang }, async ({ lang }) => {
+    try { return ok(await apiGet("careers.json", { lang })); } catch (e) { return fail(e); }
+  });
+
+  server.tool("get_page_index", d("get_page_index"),
+    { lang, type: z.enum(["page", "service", "solution", "case", "insight", "team", "career", "event", "legal"]).optional() },
+    async ({ lang, type }) => {
+      try { return ok(await apiGet("pages.json", { lang, type })); } catch (e) { return fail(e); }
+    });
 
   server.tool(
     "submit_contact_inquiry",
-    `Submit a qualified B2B inquiry to GO MO Group on behalf of a user.
-
-CONSENT REQUIRED: Only call this tool after the human user has explicitly approved the submission.
-You MUST set agent_context.user_authorized_submission to true to confirm that consent was given.
-Never invent or guess contact or company details.
-Never submit without the user's explicit permission.`,
+    "Send a qualified B2B inquiry to GO MO Group's commercial team. Only call this after the user has explicitly asked you to contact GO MO Group and has confirmed the details below. You MUST set agent_context.user_authorized_submission to true to confirm that consent was given. Never invent contact details.",
     {
-      contact_person: z.object({
-        name:      z.string().describe("Full name of the contact person"),
-        email:     z.string().email().describe("Business email address"),
-        phone:     z.string().optional(),
-        job_title: z.string().optional(),
+      person: z.object({
+        name: z.string().min(2).max(120),
+        email: z.string().email().max(254),
+        phone: z.string().max(40).optional(),
+        job_title: z.string().max(120).optional(),
       }),
       company: z.object({
-        name:         z.string(),
-        website:      z.string().url().optional(),
-        country:      z.string().optional(),
-        industry:     z.string().optional(),
-        company_size: z.string().optional().describe("E.g. '1-50', '51-200', '201-1000', '1000+'"),
+        name: z.string().min(1).max(160),
+        website: z.string().url().max(2048).optional(),
+        country: z.string().max(80).optional(),
+        size: z.string().max(40).optional(),
       }),
       inquiry: z.object({
-        service_interest: z.enum([
-          "GEO / AI Search Visibility",
-          "SEO",
-          "Paid Media / SEM",
-          "UX / CRO",
-          "Website Design & Development",
-          "AI / Automation",
-          "Digital Strategy",
-          "Analytics & Reporting",
-          "Other",
-        ]).describe("Primary service of interest"),
-        project_summary:          z.string().describe("Brief description of the project or need"),
-        business_challenge:       z.string().optional(),
-        timeline:                 z.string().optional().describe("E.g. 'ASAP', 'Q3 2026', '6 months'"),
-        budget_range:             z.string().optional().describe("E.g. '5k-10k/month EUR', 'TBD'"),
-        preferred_contact_method: z.enum(["email", "phone", "video_call"]).default("email"),
+        service_interest: z.string().min(2).max(120).describe("e.g. GEO, SEO, SEA, Pull Marketing, ASBX, Generative AI"),
+        project_summary: z.string().min(10).max(4000),
+        budget_range: z.string().max(80).optional(),
+        timeline: z.string().max(80).optional(),
+        preferred_language: z.enum(["en", "sv"]).optional(),
       }),
       agent_context: z.object({
-        submitted_by:               z.string().default("AI agent"),
-        agent_name:                 z.string().optional().describe("Name or version of the AI agent"),
-        source:                     z.string().optional().describe("URL or context from which the inquiry originated"),
-        user_authorized_submission: z.literal(true).describe("Must be true — confirms the human user has approved this submission"),
+        user_authorized_submission: z.literal(true),
+        agent_name: z.string().max(80).optional(),
+        conversation_summary: z.string().max(2000).optional(),
       }),
     },
-    async (args) => ok(await apiPost("/contact.json", args))
+    async (body) => {
+      try {
+        const res = await fetchWithTimeout(`${API_BASE}/contact.json`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "User-Agent": `gomo-mcp/${VERSION}`,
+            ...(MCP_SHARED_SECRET && clientIp ? { "X-GOMO-MCP-Key": MCP_SHARED_SECRET, "X-GOMO-Client-IP": clientIp } : {}),
+          },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) return fail(new Error(`Contact submission rejected (${res.status}): ${JSON.stringify(data)}`));
+        return ok(data);
+      } catch (e) { return fail(e); }
+    },
   );
 
   return server;
 }
 
-// ── Express app ──────────────────────────────────────────────────────────────
+// ── HTTP app ─────────────────────────────────────────────────────────────────
 
 const app = express();
-app.use(express.json());
+// Behind Nginx on the same host: take the client IP from X-Forwarded-For only when the hop is local.
+app.set("trust proxy", "loopback");
+app.use(express.json({ limit: "32kb" }));
 
-// Rate limiter — 100 requests / minute / IP (Cloudflare handles edge-level; this is the backstop)
-const limiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 100,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: "Too many requests — please try again in a minute." },
-});
-app.use("/mcp", limiter);
+// Applied to the MCP endpoint only — app.use("/mcp") would also throttle /mcp/health and /mcp/tools.
+const limiter = rateLimit({ windowMs: 60 * 1000, max: 100, standardHeaders: true, legacyHeaders: false });
 
-// MCP endpoint — stateless: new server + transport per request
-app.all("/mcp", async (req: Request, res: ExpressResponse) => {
-  const transport = new StreamableHTTPServerTransport({
-    sessionIdGenerator: undefined,
-  });
-  const server = buildServer();
+// Health and discovery live under /mcp/ so they work behind the same Nginx location.
+const health = (_req: Request, res: Response) => { res.json({ status: "ok", name: "gomo-group", version: VERSION, api_base: API_BASE }); };
+const tools = (_req: Request, res: Response) => { res.json({ name: "gomo-group", version: VERSION, transport: "streamable-http", endpoint: "https://www.gomogroup.com/mcp", tools: TOOLS }); };
+app.get(["/health", "/mcp/health"], health);
+app.get(["/tools", "/mcp/tools"], tools);
+
+app.all("/mcp", limiter, async (req: Request, res: Response) => {
+  const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
+  const server = buildServer(req.ip);
   res.on("finish", () => { server.close().catch(() => {}); });
   try {
     await server.connect(transport);
     await transport.handleRequest(req, res, req.body);
   } catch (err) {
     console.error("MCP handler error:", err);
-    if (!res.headersSent) {
-      res.status(500).json({ error: "Internal MCP server error" });
-    }
+    if (!res.headersSent) res.status(500).json({ error: "Internal MCP server error" });
   }
 });
 
-app.get("/health", (_req: Request, res: ExpressResponse) => {
-  res.json({ status: "ok", name: "go-mo-mcp", version: "1.0.0", api_base: API_BASE });
-});
-
-app.get("/tools", (_req: Request, res: ExpressResponse) => {
-  res.json({
-    mcp_endpoint: "/mcp",
-    tools: [
-      { name: "get_company",            phase: 1, method: "GET",  description: "Company identity, certifications, contact details" },
-      { name: "list_services",          phase: 1, method: "GET",  description: "All services — filter by category or tag" },
-      { name: "get_service",            phase: 1, method: "GET",  description: "Single service by ID" },
-      { name: "list_case_studies",      phase: 1, method: "GET",  description: "Case studies — filter by industry, segment, or service" },
-      { name: "get_case_study",         phase: 1, method: "GET",  description: "Single case study by ID" },
-      { name: "list_team",              phase: 1, method: "GET",  description: "Leadership team profiles" },
-      { name: "list_offices",           phase: 1, method: "GET",  description: "Office locations with addresses" },
-      { name: "submit_contact_inquiry", phase: 2, method: "POST", description: "Submit B2B inquiry — requires user_authorized_submission: true" },
-    ],
-  });
-});
-
 app.listen(PORT, () => {
-  console.log(`GO MO Group MCP server  →  http://localhost:${PORT}/mcp`);
-  console.log(`Health check            →  http://localhost:${PORT}/health`);
-  console.log(`Upstream API            →  ${API_BASE}`);
+  console.log(`gomo-mcp ${VERSION} listening on :${PORT} (api: ${API_BASE})`);
 });
